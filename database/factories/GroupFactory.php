@@ -17,7 +17,13 @@ class GroupFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'group_name' => fake()->sentence,
+            'group_time' => fake()->sentence,
+            'group_date' => fake()->date,
+            'group_type' => fake()->sentence,
+            'group_image'=> fake()->imageUrl,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
