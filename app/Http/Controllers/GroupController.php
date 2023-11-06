@@ -80,9 +80,37 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Group $group)
     {
-        //
+        $request->validate([
+            'group_name' => 'required',
+            'group_time' => 'required',
+            'group_date' => 'required',
+            'group_type' => 'required',
+            'group_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+
+        if ($request->hasFile('group_image')) {
+            $image = $request->file('group_image');
+            $imageName = time() . '.' . $image->extension();
+
+            image->storeAs('public/groups', $imageName);
+            $group_image_name = 'storage/groups/' . $imageName;
+        }
+
+        $group->update([
+            'group_name' => $request->group_name,
+            'group_time' => $request->group_time,
+            'group_date' => $request->group_date,
+            'group_type' => $request->group_type,
+            'group_image' => $group_image_name,
+
+        ]);
+
+        return to_route('groups.show', $group)->with('success','Book updated successfully');
+
+
     }
 
     /**
