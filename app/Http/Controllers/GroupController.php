@@ -21,7 +21,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class GroupController extends Controller
     public function show(string $id)
     {
         $group = Group::find($id);
-        return view('groups.show')->width('group', $group);
+        return view('groups.show')->with('group', $group);
     }
 
     /**
