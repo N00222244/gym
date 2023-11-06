@@ -72,9 +72,9 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Group $group)
     {
-        //
+        return view('groups.edit')->with('group', $group);
     }
 
     /**
