@@ -12,14 +12,14 @@
             @forelse ($groups as $group)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <h2 class="font-bold text-2xl">
-                    <a href="{{ route('groups.show', $group) }}">{{ $group->title }}</a>
+                    <a href="{{ route('groups.show', $group) }}">{{ $group->group_name }}</a>
                     </h2>
                     <p class="mt-2">
-                        {{ $group->category }}
-                        {{$group->description}}
+                        {{ $group->group_time }}
+                        {{$group->group_type}}
                         @if ($group->group_image)
                         <img src="{{ $group->group_image }}"
-                        alt="{{ $group->title }}" width="100">
+                        alt="{{ $group->group_name }}" width="100">
                     @else
                         No Image
                     @endif
