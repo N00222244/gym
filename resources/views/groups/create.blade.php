@@ -17,33 +17,41 @@
                         placeholder="Group Name"
                         class="w-full"
                         autocomplete="off"
-                        :value="@old('title')"></x-text-input>
+                        :value="@old('group_name')"></x-text-input>
 
                     <x-text-input
                         type="text"
-                        name="grop_time"
+                        name="group_time"
                         field="group_time"
-                        placeholder="time..."
+                        placeholder="time"
                         class="w-full mt-6"
-                        :value="@old('category')"></x-text-input>
+                        :value="@old('group_time')"></x-text-input>
 
-                    <!-- I created a new component called textarea, you will need to do the same to using the x-textarea component -->
+                        <x-text-input
+                        type="text"
+                        name="group_date"
+                        field="group_date"
+                        placeholder="date..."
+                        class="w-full mt-6"
+                        :value="@old('group_date')"></x-text-input>
+
+                    <!-- I created a new component called textarea -->
                     <x-textarea
-                        name="description"
+                        name="group_type"
                         rows="10"
-                        field="description"
+                        field="group_type"
                         placeholder="Description..."
                         class="w-full mt-6"
-                        :value="@old('description')">
+                        :value="@old('group_type')">
                     </x-textarea>
 
                     <x-file-input
                         type="file"
-                        name="book_image"
-                        placeholder="Book"
+                        name="group_image"
+                        placeholder="Group"
                         class="w-full mt-6"
-                        field="book_image"
-                        :value="@old('book_image')">>
+                        field="group_image"
+                        :value="@old('group_image')">>
                     </x-file-input>
 
                     <x-primary-button class="mt-6">Save Book</x-primary-button>

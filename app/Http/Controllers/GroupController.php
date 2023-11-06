@@ -29,7 +29,21 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'group_name' => 'required'
+        ]);
+
+        Group::create([
+            'group_name' => $request->group_name,
+            'group_time' => $request->group_time,
+            'group_date' => $request->group_date,
+            'group_type' => $request->group_type,
+            'group_image' => $request->group_image,
+            'created_at' => now(),
+            'updated_at' => now()
+
+        ]);
+        return to_route('groups.index');
     }
 
     /**
