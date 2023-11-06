@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Group;
 
 class GroupController extends Controller
 {
@@ -36,7 +37,8 @@ class GroupController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $group = Group::find($id);
+        return view('groups.show')->width('group', $group);
     }
 
     /**
