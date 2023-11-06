@@ -30,7 +30,7 @@ class GroupController extends Controller
     public function store(Request $request)
     {
 
-
+        if($request->hasFile('group_image')) {
         $image = $request->file('group_image');
         $imageName = time() . '.' . $image->extension();
 
@@ -40,11 +40,11 @@ class GroupController extends Controller
 
 
         $request->validate([
-            'group_name' => 'required'
-            'group_time' => 'required'
-            'group_date' => 'required'
-            'group_type' => 'required'
-            'group_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'group_name' => 'required',
+            'group_time' => 'required',
+            'group_date' => 'required',
+            'group_type' => 'required',
+            'group_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         Group::create([
@@ -52,7 +52,7 @@ class GroupController extends Controller
             'group_time' => $request->group_time,
             'group_date' => $request->group_date,
             'group_type' => $request->group_type,
-            'group_image' => $request->group_image_name,
+            'group_image' => $group_image_name,
             'created_at' => now(),
             'updated_at' => now()
 

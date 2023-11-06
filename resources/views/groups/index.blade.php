@@ -17,8 +17,10 @@
                     <p class="mt-2">
                         {{ $group->group_time }}
                         {{$group->group_type}}
+
+
                         @if ($group->group_image)
-                        <img src="{{ $group->group_image }}"
+                        <img src="{{ asset($group->group_image) }}"
                         alt="{{ $group->group_name }}" width="100">
                     @else
                         No Image
