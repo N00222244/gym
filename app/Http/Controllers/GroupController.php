@@ -91,6 +91,8 @@ class GroupController extends Controller
         ]);
 
 
+        $group_image_name =$group->group_image;
+
         if ($request->hasFile('group_image')) {
             $image = $request->file('group_image');
             $imageName = time() . '.' . $image->extension();
