@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Group') }}
+            {{ __('Edit Group') }}
         </h2>
     </x-slot>
 
@@ -18,7 +18,7 @@
                         placeholder="Group Name"
                         class="w-full"
                         autocomplete="off"
-                        :value="@old('group_name')"></x-text-input>
+                        :value="@old('group_name', $group->group_name)"></x-text-input>
 
                     <x-text-input
                         type="text"
@@ -26,7 +26,7 @@
                         field="group_time"
                         placeholder="time"
                         class="w-full mt-6"
-                        :value="@old('group_time')"></x-text-input>
+                        :value="@old('group_time', $group->group_time )"></x-text-input>
 
                         <x-text-input
                         type="text"
@@ -34,7 +34,7 @@
                         field="group_date"
                         placeholder="date..."
                         class="w-full mt-6"
-                        :value="@old('group_date')"></x-text-input>
+                        :value="@old('group_date', $group->group_date)"></x-text-input>
 
 
                     <x-textarea
@@ -43,7 +43,7 @@
                         field="group_type"
                         placeholder="Description..."
                         class="w-full mt-6"
-                        :value="@old('group_type')">
+                        :value="@old('group_type', $group->group_type)">
                     </x-textarea>
 
                     <x-file-input
@@ -52,7 +52,7 @@
                         placeholder="Group"
                         class="w-full mt-6"
                         field="group_image"
-                        :value="@old('group_image')">>
+                        :value="@old('group_image', $group->group_image)">>
                     </x-file-input>
 
                     <x-primary-button class="mt-6">Save Book</x-primary-button>

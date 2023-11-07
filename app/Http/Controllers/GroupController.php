@@ -87,7 +87,7 @@ class GroupController extends Controller
             'group_time' => 'required',
             'group_date' => 'required',
             'group_type' => 'required',
-            'group_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'group_image' => 'nullable|image',
         ]);
 
 
@@ -95,7 +95,7 @@ class GroupController extends Controller
             $image = $request->file('group_image');
             $imageName = time() . '.' . $image->extension();
 
-            image->storeAs('public/groups', $imageName);
+            $image->storeAs('public/groups', $imageName);
             $group_image_name = 'storage/groups/' . $imageName;
         }
 
