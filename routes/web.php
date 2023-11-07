@@ -23,6 +23,10 @@ Route::get('/', function () {
 
 Route::resource('/groups', GroupController::class);
 
+Route::resource('/trainers', TrainerController::class);
+
+
+
 
 
 Route::get('/dashboard', function () {
