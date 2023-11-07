@@ -17,7 +17,12 @@ class TrainerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'first_name' => fake()->sentence,
+            'last_name' => fake()->sentence,
+            'age' => fake()->sentence,
+            'trainer_image' => fake()->imageUrl,
+            'created_at' => now(),
+            'updated_at' =>now(),
         ];
     }
 }
