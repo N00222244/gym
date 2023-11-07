@@ -12,7 +12,7 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        $groups = Trainer::all();
+        $trainers = Trainer::all();
         return view('trainers.index', compact('trainers'));
     }
 

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('All Groups') }}
+            {{ __('All Trainers') }}
         </h2>
     </x-slot>
 
@@ -20,7 +20,7 @@
                     </h2>
                     <p class="mt-2">
                         {{ $trainer->last_name }}
-                        {{$group->age}}
+                        {{$trainer->age}}
 
 
                         @if ($trainer->trainer_image)
