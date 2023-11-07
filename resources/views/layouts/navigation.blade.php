@@ -10,20 +10,29 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <!-- Navigation Links  - these are the links at the top of the page-->
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-            </div>
+
 
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
                     {{ __('All Groups') }}
                 </x-nav-link>
             </div>
-        
+
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('groups.create')" :active="request()->routeIs('groups.create')">
+                    {{ __('Create Group') }}
+                </x-nav-link>
+            </div>
+        </div>
+
+
+
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">

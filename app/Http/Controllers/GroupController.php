@@ -118,8 +118,9 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Group $group)
     {
-        //
+        $group->delete();
+        return to_route('groups.index')->with('success', 'Book deleted successfully');
     }
 }

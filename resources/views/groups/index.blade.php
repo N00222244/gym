@@ -8,6 +8,10 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+            <x-alert-success>
+                {{session('success')}}
+            </x-alert-success>
+
             <a href="{{ route('groups.create') }}" class="btn-link btn-lg mb-2">Add a Group</a>
             @forelse ($groups as $group)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">

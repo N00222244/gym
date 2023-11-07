@@ -40,6 +40,11 @@
                         </tbody>
                     </table>
                     <x-primary-button><a href="{{route('groups.edit', $group) }}">Edit</a> </x-primary-button>
+                    <form action="{{ route('groups.destroy', $group) }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <x-primary-button onclick="return confirm('Are you sure you want to delete?')">Delete </x-primary-button>
+                    </form>
                 </div>
             </div>
         </div>
