@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Trainer;
 
 class TrainerController extends Controller
 {
@@ -11,7 +12,8 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        //
+        $groups = Trainer::all();
+        return view('trainers.index', compact('trainers'));
     }
 
     /**
@@ -35,7 +37,8 @@ class TrainerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $trainer = Trainer::find($id);
+        return view('trainers.show')->with('trainer', $trainer);
     }
 
     /**
