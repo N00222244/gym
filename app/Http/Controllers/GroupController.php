@@ -40,6 +40,8 @@ class GroupController extends Controller
 
 
         $request->validate([
+
+        
             'group_name' => 'required',
             'group_time' => 'required',
             'group_date' => 'required',
