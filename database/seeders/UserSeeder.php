@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -26,8 +29,9 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->name = 'Joe Jones';
+        $user->email = 'JoeJones@larafest.ie';
         $user->password = Hash::make('password');
         $user->save();
-        $user->roles()attach($role_user);
+        $user->roles()->attach($role_user);
     }
 }
