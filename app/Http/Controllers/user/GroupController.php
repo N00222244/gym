@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\Group;
@@ -18,142 +18,17 @@ class GroupController extends Controller
         $user->authorizeRoles('admin');
 
         $groups = Group::paginate(10);
-        return view('admin.groups.index')->with('groups' , $groups);
+        return view('user.groups.index')->with('groups' , $groups);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
 
-        $user = Auth::user();
-        $user->authorizeRoles('admin');
-
-        return view('admin.groups.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-
-        if($request->hasFile('group_image')) {
-        $image = $request->file('group_image');
-        $imageName = time() . '.' . $image->extension();
-
-        $image->storeAs('public/groups', $imageName);
-        $group_image_name = 'storage/groups/' . $imageName;
-      }
-
-
-        $request->validate([
-
-
-            'group_name' => 'required',
-            'group_time' => 'required',
-            'group_date' => 'required',
-            'group_type' => 'required',
-            'group_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        Group::create([
-            'group_name' => $request->group_name,
-            'group_time' => $request->group_time,
-            'group_date' => $request->group_date,
-            'group_type' => $request->group_type,
-            'group_image' => $group_image_name,
-            'created_at' => now(),
-            'updated_at' => now()
-
-        ]);
-        return to_route('groups.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-
         $user = Auth::user();
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
 
         $group = Group::find($id);
-        return view('admin.groups.show')->with('group', $group);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Group $group)
-    {
-
-        $user = Auth::user();
-        $user->authorizeRoles('admin');
-
-
-        return view('admin.groups.edit')->with('group', $group);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Group $group)
-    {
-
-
-        $user = Auth::user();
-        $user->authorizeRoles('admin');
-
-
-
-        $request->validate([
-            'group_name' => 'required',
-            'group_time' => 'required',
-            'group_date' => 'required',
-            'group_type' => 'required',
-            'group_image' => 'nullable|image',
-        ]);
-
-
-        $group_image_name =$group->group_image;
-
-        if ($request->hasFile('group_image')) {
-            $image = $request->file('group_image');
-            $imageName = time() . '.' . $image->extension();
-
-            $image->storeAs('public/groups', $imageName);
-            $group_image_name = 'storage/groups/' . $imageName;
-        }
-
-        $group->update([
-            'group_name' => $request->group_name,
-            'group_time' => $request->group_time,
-            'group_date' => $request->group_date,
-            'group_type' => $request->group_type,
-            'group_image' => $group_image_name,
-
-        ]);
-
-        return to_route('admin.groups.show', $group)->with('success','Book updated successfully');
-
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Group $group)
-    {
-
-
-        $user = Auth::user();
-        $user->authorizeRoles('admin');
-
-
-        $group->delete();
-        return to_route('admin.groups.index')->with('success', 'Book deleted successfully');
+        return view('user.groups.show')->with('group', $group);
     }
 }
+
