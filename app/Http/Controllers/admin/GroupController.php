@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Group;
+Use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -12,8 +14,11 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::all();
-        return view('groups.index', compact('groups'));
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $groups = Group::paginate(10);
+        return view('admin.groups.index')->with('groups' , $groups);
     }
 
     /**
@@ -41,7 +46,7 @@ class GroupController extends Controller
 
         $request->validate([
 
-        
+
             'group_name' => 'required',
             'group_time' => 'required',
             'group_date' => 'required',
