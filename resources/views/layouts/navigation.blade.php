@@ -10,38 +10,35 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links  - these are the links at the top of the page-->
-                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if(auth()->user()->hasRole('admin'))
+                        <x-nav-link :href="route('admin.groups.index')" :active="request()->routeIs('admin.groups.index')">
+                            {{ __('All groups') }}
+                        </x-nav-link>
+                    @elseif(auth()->user()->hasRole('user'))
+                        <x-nav-link :href="route('user.groups.index')" :active="request()->routeIs('user.groups.index')">
+                            {{ __('All groups') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
+                            {{ __('All groups') }}
+                        </x-nav-link>
+                    @endif
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if(auth()->user()->hasRole('admin'))
+                        <x-nav-link :href="route('admin.groups.create')" :active="request()->routeIs('admin.groups.create')">
+                            {{ __('Create Book') }}
+                        </x-nav-link>
 
-
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('groups.index')" :active="request()->routeIs('groups.index')">
-                    {{ __('All Groups') }}
-                </x-nav-link>
-            </div>
-
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('groups.create')" :active="request()->routeIs('groups.create')">
-                    {{ __('Create Group') }}
-                </x-nav-link>
-            </div>
-
-
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('trainers.index')" :active="request()->routeIs('trainers.index')">
-                    {{ __('All Trainers') }}
-                </x-nav-link>
-            </div>
-
-
-
-        </div>
-
-
+                    @endif
+                </div>
 
 
             <!-- Settings Dropdown -->

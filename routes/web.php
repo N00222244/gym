@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GroupController;
-use App\Http\Controllers\TrainerController;
-use App\Http\Controllers\User\GroupController as UserGroupController;
-use App\Http\Controllers\Admin\GroupController as AdminGroupController;
+// use App\Http\Controllers\GroupController;
+// use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\user\GroupController as UserGroupController;
+use App\Http\Controllers\admin\GroupController as AdminGroupController;
 
 
 /*
@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 
 
-Route::resource('/groups', GroupController::class);
+// Route::resource('/groups', GroupController::class);
 
 Route::resource('/trainers', TrainerController::class);
 
