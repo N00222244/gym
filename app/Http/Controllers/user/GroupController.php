@@ -15,7 +15,7 @@ class GroupController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
 
         $groups = Group::paginate(10);
         return view('user.groups.index')->with('groups' , $groups);

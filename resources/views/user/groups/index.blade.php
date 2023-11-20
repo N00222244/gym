@@ -12,11 +12,11 @@
                 {{session('success')}}
             </x-alert-success>
 
-            
+
             @forelse ($groups as $group)
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <h2 class="font-bold text-2xl">
-                    <a href="{{ route('groups.show', $group) }}">{{ $group->group_name }}</a>
+                    <a href="{{ route('user.groups.show', $group) }}">{{ $group->group_name }}</a>
                     </h2>
                     <p class="mt-2">
                         {{ $group->group_time }}
