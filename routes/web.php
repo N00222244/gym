@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\User\GroupController as UserGroupController;
+use App\Http\Controllers\Admin\GroupController as AdminGroupController;
 
 
 /*
@@ -40,5 +42,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+Route::resource('/admin/groups', AdminGroupController::class)->middleware(['auth'])->names('admin.groups');
+Route::resource('/user/groups', UserGroupController::class)->middleware(['auth'])->names('user.groups')->only(['index', 'show']);
+
+
+
+
 
 require __DIR__.'/auth.php';
