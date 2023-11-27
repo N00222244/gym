@@ -17,7 +17,10 @@ class GroupController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('user');
 
-        $groups = Group::paginate(10);
+       // $groups = Group::paginate(10);
+
+       $groups = Group::with('gym')->get();
+
         return view('user.groups.index')->with('groups' , $groups);
     }
 

@@ -19,6 +19,16 @@
                     <a href="{{ route('admin.groups.show', $group) }}">{{ $group->group_name }}</a>
                     </h2>
                     <p class="mt-2">
+
+
+
+
+                        <h3 class="font-bold text-1x1"> <strong> Publisher Name </strong>
+                            {{$group->gym->name}} </h3>
+                            {{$group->description}}
+
+
+
                         {{ $group->group_time }}
                         {{$group->group_type}}
 

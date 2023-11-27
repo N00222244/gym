@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Group;
 Use App\Http\Controllers\Controller;
+use App\Models\Gym;
 use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
@@ -17,7 +18,10 @@ class GroupController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        $groups = Group::paginate(10);
+        //$groups = Group::paginate(10);
+
+        $groups = Group::with('gym')->get();
+
         return view('admin.groups.index')->with('groups' , $groups);
     }
 

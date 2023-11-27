@@ -19,8 +19,8 @@ class Group extends Model
     ];
 
 
-    public function publisher()
+    public function gym()
     {
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Gym::class);
     }
 }
