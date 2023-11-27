@@ -14,10 +14,13 @@ class GymFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'phone_no' => $this->faker->phone_no,
+            'address' => $this->faker->address,
+            'email' => $this->faker->email,
         ];
     }
 }

@@ -10,19 +10,22 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-
-        Group::factory()->count(50)->create();
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+
+
+
+        // This calls hasgroups()  and seeds the groups table too rather then user the line of code below
+        $this->call(GymSeeder::class);
+
+
+       // Group::factory()->count(50)->create();
+        //$this->call(RoleSeeder::class);
+        //$this->call(UserSeeder::class);
     }
 }
