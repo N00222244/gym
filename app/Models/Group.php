@@ -17,4 +17,10 @@ class Group extends Model
         'group_type',
         'group_image',
     ];
+
+
+    public function publisher()
+    {
+        return $this->belongsTo(Publisher::class);
+    }
 }
