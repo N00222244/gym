@@ -19,8 +19,11 @@
                     <a href="{{ route('user.groups.show', $group) }}">{{ $group->group_name }}</a>
                     </h2>
                     <p class="mt-2">
-                        {{ $group->group_time }}
+                        {{$group->gym->name}} </h3>
+                        {{$group->group_time}}
+                        {{ $group->group_date }}
                         {{$group->group_type}}
+                        {{$group->group_image}}
 
 
                         @if ($group->group_image)

@@ -25,12 +25,10 @@
 
                         <h3 class="font-bold text-1x1"> <strong> Publisher Name </strong>
                             {{$group->gym->name}} </h3>
-                            {{$group->description}}
-
-
-
-                        {{ $group->group_time }}
-                        {{$group->group_type}}
+                            {{$group->group_time}}
+                            {{ $group->group_date }}
+                            {{$group->group_type}}
+                            {{$group->group_image}}
 
 
                         @if ($group->group_image)

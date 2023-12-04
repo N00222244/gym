@@ -25,17 +25,29 @@
                             </td>
                             </tr>
                             <tr>
-                                <td class="font-bold ">Title  </td>
+                                <td class="font-bold ">Group Name  </td>
                                 <td>{{ $group->group_name }}</td>
                             </tr>
 
                             <tr>
                                 <td class="font-bold">Description </td>
-                                <td>{{ $group->group_time }}</td>
+                                <td>{{ $group->Description }}</td>
                             </tr>
                             <tr>
                                 <td class="font-bold ">Category </td>
                                 <td>{{ $group->group_type }}</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold ">Category </td>
+                                <td>{{ $group->group_type }}</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold ">Gym Address </td>
+                                <td>{{ $group->gym->Address }}</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold ">Gym Phone </td>
+                                <td>{{ $group->gym->phone_no }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -44,3 +56,10 @@
         </div>
     </div>
 </x-app-layout>
+
+
+{{--       {{$group->gym->name}} </h3>
+                            {{$group->grpup_time}}
+                            {{ $group->group_date }}
+                            {{$group->group_type}}
+                            {{$group->group_image}} --}}

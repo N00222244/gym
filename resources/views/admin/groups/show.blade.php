@@ -25,18 +25,29 @@
                             </td>
                             </tr>
                             <tr>
-                                <td class="font-bold ">Title  </td>
+                                <td class="font-bold ">Group Name  </td>
                                 <td>{{ $group->group_name }}</td>
                             </tr>
 
                             <tr>
                                 <td class="font-bold">Description </td>
-                                <td>{{ $group->group_time }}</td>
+                                <td>{{ $group->Description }}</td>
                             </tr>
                             <tr>
                                 <td class="font-bold ">Category </td>
                                 <td>{{ $group->group_type }}</td>
                             </tr>
+                            <tr>
+                                <td class="font-bold ">Category </td>
+                                <td>{{ $group->group_type }}</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold ">Gym Address </td>
+                                <td>{{ $group->gym->Address }}</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold ">Gym Phone </td>
+                                <td>{{ $group->gym->phone_no }}</td>
                         </tbody>
                     </table>
                     <x-primary-button><a href="{{route('admin.groups.edit', $group) }}">Edit</a> </x-primary-button>

@@ -9,15 +9,14 @@ class Gym extends Model
 {
     use HasFactory;
 
+    protected fillable
+
     public function groups()
     {
         return $this->hasMany(Group::class);
     }
 
-    public function gym()
-    {
-        return $this->belongsTo(Gym::class);
-    }
+
 
 
 }
