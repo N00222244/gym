@@ -18,7 +18,7 @@ class GymFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'phone_no' => $this->faker->phone_no,
+            'phone_no' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
             'email' => $this->faker->email,
         ];

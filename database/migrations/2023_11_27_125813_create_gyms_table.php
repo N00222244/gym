@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gyms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('phone_no');
+            $table->string('phone_no');
             $table->text('address');
             $table->string('email');
             $table->timestamps();
