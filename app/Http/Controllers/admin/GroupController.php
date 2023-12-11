@@ -34,7 +34,8 @@ class GroupController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        return view('admin.groups.create');
+        $gyms = Gym::all();
+        return view('admin.groups.create')->with('gyms',$gyms);
     }
 
     /**
@@ -60,6 +61,7 @@ class GroupController extends Controller
             'group_date' => 'required',
             'group_type' => 'required',
             'group_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gym_id' => 'required'
         ]);
 
         Group::create([
@@ -68,6 +70,7 @@ class GroupController extends Controller
             'group_date' => $request->group_date,
             'group_type' => $request->group_type,
             'group_image' => $group_image_name,
+            'gym_id' =>$request->gym_id,
             'created_at' => now(),
             'updated_at' => now()
 
@@ -97,8 +100,8 @@ class GroupController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-
-        return view('admin.groups.edit')->with('group', $group);
+        $gyms = Gym::all();
+        return view('admin.groups.edit', compact('group', 'gyms'));
     }
 
     /**
@@ -118,6 +121,7 @@ class GroupController extends Controller
             'group_time' => 'required',
             'group_date' => 'required',
             'group_type' => 'required',
+            'gym_id' => 'required',
             'group_image' => 'nullable|image',
         ]);
 
@@ -137,6 +141,7 @@ class GroupController extends Controller
             'group_time' => $request->group_time,
             'group_date' => $request->group_date,
             'group_type' => $request->group_type,
+            'gym_id' => $request->gym_id,
             'group_image' => $group_image_name,
 
         ]);

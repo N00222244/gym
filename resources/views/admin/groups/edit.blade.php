@@ -55,6 +55,10 @@
                         :value="@old('group_image', $group->group_image)">>
                     </x-file-input>
 
+                    <div class="mt-6">
+                        <x-select-gym name="gym_id" :gyms="$gyms" :selected="old('gym_id')"/>
+                    </div>
+
                     <x-primary-button class="mt-6">Save Book</x-primary-button>
                 </form>
             </div>

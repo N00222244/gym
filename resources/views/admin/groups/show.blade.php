@@ -37,10 +37,7 @@
                                 <td class="font-bold ">Category </td>
                                 <td>{{ $group->group_type }}</td>
                             </tr>
-                            <tr>
-                                <td class="font-bold ">Category </td>
-                                <td>{{ $group->group_type }}</td>
-                            </tr>
+
                             <tr>
                                 <td class="font-bold ">Gym Address </td>
                                 <td>{{ $group->gym->Address }}</td>
@@ -48,6 +45,10 @@
                             <tr>
                                 <td class="font-bold ">Gym Phone </td>
                                 <td>{{ $group->gym->phone_no }}</td>
+
+
+
+
                         </tbody>
                     </table>
                     <x-primary-button><a href="{{route('admin.groups.edit', $group) }}">Edit</a> </x-primary-button>

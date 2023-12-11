@@ -51,8 +51,13 @@
                         placeholder="Group"
                         class="w-full mt-6"
                         field="group_image"
-                        :value="@old('group_image')">>
+                        :value="@old('group_image')">
                     </x-file-input>
+
+                    <div class="mt-6">
+                        <x-select-gym name="gym_id" :gyms="$gyms" :selected="old('gym_id')"/>
+                    </div>
+
 
                     <x-primary-button class="mt-6">Save Book</x-primary-button>
                 </form>
