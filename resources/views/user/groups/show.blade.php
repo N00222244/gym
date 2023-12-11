@@ -41,6 +41,9 @@
                                 <td class="font-bold ">Category </td>
                                 <td>{{ $group->group_type }}</td>
                             </tr>
+                            
+
+
                             <tr>
                                 <td class="font-bold ">Gym Address </td>
                                 <td>{{ $group->gym->Address }}</td>
