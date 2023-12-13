@@ -14,9 +14,7 @@
                 {{ session('success') }}
             </x-alert-success>
 
-            <x-primary-button>
-                <a href="{{ route('admin.gyms.create') }}">Add a gym</a>
-            </x-primary-button>
+            
 
             @forelse ($gyms as $gym)
                 <x-card>

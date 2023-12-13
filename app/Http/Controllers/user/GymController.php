@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\Group;
@@ -16,12 +16,14 @@ class GymController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
+
+        $gyms = Gym::all();
 
 
-        $gyms = Gym::with('group')->get();
+       // $gyms = Gym::with('group')->get();
 
-        return view('admin.gyms.index')->with('gyms', $gyms);
+        return view('user.gyms.index')->with('gyms', $gyms);
     }
 
 
@@ -32,10 +34,10 @@ class GymController extends Controller
     {
 
         $user = Auth::user();
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
 
         $gym = Gym::find($id);
-        return view('admin.gyms.show')->with('gym', $gym);
+        return view('user.gyms.show')->with('gym', $gym);
     }
 
 

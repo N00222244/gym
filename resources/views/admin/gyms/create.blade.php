@@ -54,7 +54,7 @@
                     </x-file-input>
 
                     <div class="mt-6">
-                        <x-select-gym name="gym_id" :gyms="$gyms" :selected="old('gym_id')"/>
+                        <x-select-group name="group_id" :groups="$groups" :selected="old('group_id')"/>
                     </div>
 
 
