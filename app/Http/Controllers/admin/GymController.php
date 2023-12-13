@@ -84,14 +84,18 @@ class GymController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Gym $gym)
     {
 
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        $gym = Gym::find($id);
-        return view('admin.gyms.show')->with('gym', $gym);
+        if (!Auth::id()) {
+            return abort(403);
+        }
+
+        $groups = $gym->groups;
+        return view('admin.gyms.show', compact('gym', 'groups'));
     }
 
     /**
