@@ -146,7 +146,7 @@ class GroupController extends Controller
 
         ]);
 
-        return to_route('admin.groups.show', $group)->with('success','Book updated successfully');
+        return to_route('admin.groups.show', $group)->with('success','Group updated successfully');
 
 
     }
@@ -163,6 +163,6 @@ class GroupController extends Controller
 
 
         $group->delete();
-        return to_route('admin.groups.index')->with('success', 'Book deleted successfully');
+        return to_route('admin.groups.index')->with('success', 'Group deleted successfully');
     }
 }
