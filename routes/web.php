@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\user\GroupController as UserGroupController;
 use App\Http\Controllers\admin\GroupController as AdminGroupController;
+use App\Http\Controllers\user\GymController as UserGymController;
+use App\Http\Controllers\admin\GymController as AdminGymController;
 
 
 /*
@@ -27,7 +29,7 @@ Route::get('/', function () {
 
 // Route::resource('/groups', GroupController::class);
 
-Route::resource('/trainers', TrainerController::class);
+//Route::resource('/trainers', TrainerController::class);
 
 
 
@@ -48,6 +50,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('/admin/groups', AdminGroupController::class)->middleware(['auth'])->names('admin.groups');
 Route::resource('/user/groups', UserGroupController::class)->middleware(['auth'])->names('user.groups')->only(['index', 'show']);
 
+Route::resource('/admin/gyms', AdminGymController::class)->middleware(['auth'])->names('admin.gyms');
+Route::resource('/user/gyms', UserGymController::class)->middleware(['auth'])->names('user.gyms')->only(['index', 'show']);
 
 
 

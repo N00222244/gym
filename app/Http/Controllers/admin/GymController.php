@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Gym;
 use Illuminate\Support\Facades\Auth;
 
-class GroupController extends Controller
+class GymController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,12 @@ class GroupController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        //$groups = Group::paginate(10);
 
-        $gyms = Gym::with('group')->get();
+        $gyms = Gym::all();
+
+
+        //$groups = Group::paginate(10);
+        //$gyms = Gym::with('group')->get();
 
         return view('admin.gyms.index')->with('gyms', $gyms);
     }

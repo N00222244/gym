@@ -39,6 +39,17 @@
 
                     @endif
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if(auth()->user()->hasRole('admin'))
+                        <x-nav-link :href="route('admin.gyms.index')" :active="request()->routeIs('admin.groups.index')">
+                            {{ __('gyms') }}
+                        </x-nav-link>
+                    @elseif(auth()->user()->hasRole('user'))
+                        <x-nav-link :href="route('user.gyms.index')" :active="request()->routeIs('user.groups.index')">
+                            {{ __('gyms') }}
+                        </x-nav-link>
+                    @endif
+                </div>
 
 
             <!-- Settings Dropdown -->
