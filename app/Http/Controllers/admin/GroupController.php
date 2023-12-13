@@ -44,18 +44,11 @@ class GroupController extends Controller
     public function store(Request $request)
     {
 
-        if($request->hasFile('group_image')) {
-        $image = $request->file('group_image');
-        $imageName = time() . '.' . $image->extension();
-
-        $image->storeAs('public/groups', $imageName);
-        $group_image_name = 'storage/groups/' . $imageName;
-      }
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
 
 
         $request->validate([
-
-
             'group_name' => 'required',
             'group_time' => 'required',
             'group_date' => 'required',
@@ -64,18 +57,27 @@ class GroupController extends Controller
             'gym_id' => 'required'
         ]);
 
+
+        if($request->hasFile('group_image')) {
+        $image = $request->file('group_image');
+        $imageName = time() . '.' . $image->extension();
+
+        $image->storeAs('public/groups', $imageName);
+        $group_image_name = 'storage/groups/' . $imageName;
+      }
+
         Group::create([
             'group_name' => $request->group_name,
             'group_time' => $request->group_time,
             'group_date' => $request->group_date,
             'group_type' => $request->group_type,
             'group_image' => $group_image_name,
-            'gym_id' =>$request->gym_id,
+            'gym_id' => $request->gym_id,
             'created_at' => now(),
             'updated_at' => now()
 
         ]);
-        return to_route('groups.index');
+        return to_route('admin.groups.index');
     }
 
     /**

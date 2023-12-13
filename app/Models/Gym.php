@@ -14,7 +14,8 @@ class Gym extends Model
         'name',
         'phone_no',
         'address',
-        'email'
+        'email',
+        'group_id'
 
     ];
 

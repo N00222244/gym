@@ -16,6 +16,7 @@ class Group extends Model
         'group_date',
         'group_type',
         'group_image',
+        'gym_id'
     ];
 
 
