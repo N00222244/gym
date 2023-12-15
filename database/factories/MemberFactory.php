@@ -21,7 +21,7 @@ class MemberFactory extends Factory
             'last_name' => $this->faker->name,
             'phone_no' => $this->faker->name,
             'address' => $this->faker->address,
-            'creditcaard_no' => $this->faker->int,
+            'creditcard_no' => $this->faker->name,
         ];
     }
 }
