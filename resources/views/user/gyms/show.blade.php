@@ -18,18 +18,13 @@
 
             @forelse ($groups as $group)
                 <x-card>
-                        <a href="{{ route('admin.groups.show', $group) }}" class="font-bold text 2x1">{{$group->group_name}}</a>
+                        <a href="{{ route('user.groups.show', $group) }}" class="font-bold text 2x1">{{$group->group_name}}</a>
                 </x-card>
             @empty
                 <p>No Groups in gym</p>
             @endforelse
 
-            <x-primary-button><a href="{{route('admin.gyms.edit', $gym) }}">Edit</a> </x-primary-button>
-            <form action="{{ route('admin.gyms.destroy', $gym) }}" method="post">
-                @method('delete')
-                @csrf
-                <x-primary-button onclick="return confirm('Are you sure you want to delete?')">Delete </x-primary-button>
-            </form>
+     
         </div>
     </div>
 </x-app-layout>

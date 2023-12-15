@@ -24,4 +24,9 @@ class Group extends Model
     {
         return $this->belongsTo(Gym::class);
     }
+
+    public function members()
+    {
+        return $this->belongsToMany(Member::class)->withTimestamps();
+    }
 }

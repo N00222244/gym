@@ -14,12 +14,12 @@
                 {{ session('success') }}
             </x-alert-success>
 
-            
+
 
             @forelse ($gyms as $gym)
                 <x-card>
 
-                        <a href="{{ route('admin.gyms.show', $gym) }}" class="font-bold text-2xl">{{ $gym->name }}</a>
+                        <a href="{{ route('user.gyms.show', $gym) }}" class="font-bold text-2xl">{{ $gym->name }}</a>
 
                         <p class="mt-2 text-gray-700">
                             <span class="font-bold">ID:</span> {{ $gym->id }}

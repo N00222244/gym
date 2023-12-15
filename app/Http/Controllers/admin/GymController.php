@@ -104,7 +104,7 @@ class GymController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
-        $gyms = Group::all();
+        $groups = Group::all();
         return view('admin.gyms.edit', compact('gym', 'groups'));
     }
 
@@ -121,32 +121,24 @@ class GymController extends Controller
 
 
         $request->validate([
-            'gym_name' => 'required',
-            'gym_time' => 'required',
-            'gym_date' => 'required',
-            'gym_type' => 'required',
-            'group_id' => 'required',
-            'gym_image' => 'nullable|image',
+            'name' => 'required',
+            'phone_no' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+
+
         ]);
 
 
-        $gym_image_name = $gym->gym_image;
 
-        if ($request->hasFile('gym_image')) {
-            $image = $request->file('gym_image');
-            $imageName = time() . '.' . $image->extension();
-
-            $image->storeAs('public/gyms', $imageName);
-            $gym_image_name = 'storage/gyms/' . $imageName;
-        }
 
         $gym->update([
-            'gym_name' => $request->gym_name,
-            'gym_time' => $request->gym_time,
-            'gym_date' => $request->gym_date,
-            'gym_type' => $request->gym_type,
-            'group_id' => $request->group_id,
-            'gym_image' => $gym_image_name,
+            'name' => $request->name,
+            'phone_no' => $request->phone_no,
+            'address' => $request->address,
+            'email' => $request->email,
+
+
 
         ]);
 
@@ -158,15 +150,22 @@ class GymController extends Controller
      */
     public function destroy(Gym $gym)
     {
-
-
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
+        // Dissociate associated groups without modifying gym_id
+        $gym->groups->each(function ($group) {
+            $group->gym()->dissociate();
+            $group->save();
+        });
 
+        // Delete the gym
         $gym->delete();
-        return to_route('admin.gyms.index')->with('success', 'Gym deleted successfully');
+
+        return redirect()->route('admin.gyms.index')->with('success', 'Gym deleted successfully');
     }
+
+
 }
 
 

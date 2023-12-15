@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         // This calls hasgroups()  and seeds the groups table too rather then user the line of code below
         $this->call(GymSeeder::class);
 
-
+        //creates members and gets groups
+        $this->call(MemberSeeder::class);
        // Group::factory()->count(50)->create();
         //$this->call(RoleSeeder::class);
         //$this->call(UserSeeder::class);

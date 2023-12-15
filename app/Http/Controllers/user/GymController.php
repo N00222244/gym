@@ -34,14 +34,14 @@ class GymController extends Controller
     {
 
         $user = Auth::user();
-        $user->authorizeRoles('admin');
+        $user->authorizeRoles('user');
 
         if (!Auth::id()) {
             return abort(403);
         }
 
         $groups = $gym->groups;
-        return view('admin.gyms.show', compact('gym', 'groups'));
+        return view('user.gyms.show', compact('gym', 'groups'));
     }
 
 
