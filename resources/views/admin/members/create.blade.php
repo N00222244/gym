@@ -65,12 +65,12 @@
 
                 <div class="form-group">
                     <label for="members"><strong> Members </strong> <br> </label>
-                    @foreach ($authors as $author)
+                    @foreach ($members as $member)
                     <input type="checkbox", value="{{$member->id}}" name="members[]">
                     {{$member->first_name}}
                     @endforeach
                 </div>
-                
+
 
 
                     <div class="mt-6">
