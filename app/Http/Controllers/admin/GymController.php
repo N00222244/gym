@@ -59,26 +59,23 @@ class GymController extends Controller
         $request->validate([
 
 
-            'gym_name' => 'required',
-            'gym_time' => 'required',
-            'gym_date' => 'required',
-            'gym_type' => 'required',
-            'gym_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'group_id' => 'required'
+            'name' => 'required',
+            'phone_no' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+
         ]);
 
         Gym::create([
-            'gym_name' => $request->gym_name,
-            'gym_time' => $request->gym_time,
-            'gym_date' => $request->gym_date,
-            'gym_type' => $request->gym_type,
-            'gym_image' => $gym_image_name,
-            'group_id' => $request->group_id,
+            'name' => $request->name,
+            'phone_no' => $request->phone_no,
+            'address' => $request->address,
+            'email' => $request->email,
             'created_at' => now(),
             'updated_at' => now()
 
         ]);
-        return to_route('gyms.index');
+        return to_route('admin.gyms.index');
     }
 
     /**

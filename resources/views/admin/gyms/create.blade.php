@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Groups') }}
+            {{ __('Create gyms') }}
         </h2>
     </x-slot>
 
@@ -12,53 +12,48 @@
                     @csrf
                     <x-text-input
                         type="text"
-                        name="title"
-                        field="title"
-                        placeholder="Title...."
+                        name="name"
+                        field="name"
+                        placeholder="Name...."
                         class="w-full"
                         autocomplete="off"
-                        :value="@old('title')"></x-text-input>
+                        :value="@old('name')"></x-text-input>
 
                     <x-text-input
                         type="text"
-                        name="category"
-                        field="category"
-                        placeholder="Category..."
+                        name="phone_no"
+                        field="phone_no"
+                        placeholder="phone_no..."
                         class="w-full mt-6"
-                        :value="@old('category')"></x-text-input>
+                        :value="@old('phone_no')"></x-text-input>
 
                     <!-- I created a new component called textarea, you will need to do the same to using the x-textarea component -->
                     <x-textarea
-                        name="description"
-                        rows="10"
-                        field="description"
-                        placeholder="Description..."
+                        name="address"
+                        rows="3"
+                        field="address"
+                        placeholder="address..."
                         class="w-full mt-6"
-                        :value="@old('description')">
+                        :value="@old('address')">
                     </x-textarea>
 
                     <x-text-input
                     type="text"
-                    name="isbn"
-                    field="isbn"
-                    placeholder="ISBN..."
+                    name="email"
+                    field="email"
+                    placeholder="email..."
                     class="w-full mt-6"
-                    :value="@old('isbn')"></x-text-input>
+                    :value="@old('email')"></x-text-input>
 
-                    <x-file-input
-                        type="file"
-                        name="book_image"
-                        placeholder="Book"
-                        class="w-full mt-6"
-                        field="book_image">
-                    </x-file-input>
+
+
 
                     <div class="mt-6">
                         <x-select-group name="group_id" :groups="$groups" :selected="old('group_id')"/>
                     </div>
 
 
-                    <x-primary-button class="mt-6">Save Group</x-primary-button>
+                    <x-primary-button class="mt-6">Save gym</x-primary-button>
                 </form>
             </div>
         </div>
