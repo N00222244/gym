@@ -41,7 +41,7 @@
                                 <td class="font-bold ">Category </td>
                                 <td>{{ $group->group_type }}</td>
                             </tr>
-                            
+
 
 
                             <tr>
@@ -52,6 +52,15 @@
                                 <td class="font-bold ">Gym Phone </td>
                                 <td>{{ $group->gym->phone_no }}</td>
                             </tr>
+
+                            <div class="font-bold mb-2">Members</div>
+                            @foreach ($group->members as $member)
+                                <a href="{{ route('user.members.show', $member) }}" > <p>{{ $member->first_name }}</p> </a>
+                            @endforeach
+                        </div>
+
+
+
                         </tbody>
                     </table>
                 </div>

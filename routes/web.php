@@ -8,6 +8,8 @@ use App\Http\Controllers\user\GroupController as UserGroupController;
 use App\Http\Controllers\admin\GroupController as AdminGroupController;
 use App\Http\Controllers\user\GymController as UserGymController;
 use App\Http\Controllers\admin\GymController as AdminGymController;
+use App\Http\Controllers\Admin\MemberController as AdminMemberController;
+use App\Http\Controllers\User\MemberController as UserMemberController;
 
 
 /*
@@ -53,7 +55,8 @@ Route::resource('/user/groups', UserGroupController::class)->middleware(['auth']
 Route::resource('/admin/gyms', AdminGymController::class)->middleware(['auth'])->names('admin.gyms');
 Route::resource('/user/gyms', UserGymController::class)->middleware(['auth'])->names('user.gyms')->only(['index', 'show']);
 
-
+Route::resource('/admin/members', AdminMemberController::class)->middleware(['auth'])->names('admin.members');
+Route::resource('/user/members', UserMemberController::class)->middleware(['auth'])->names('user.members')->only(['index', 'show']);
 
 
 require __DIR__.'/auth.php';

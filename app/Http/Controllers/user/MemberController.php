@@ -34,9 +34,13 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Member $member)
     {
-        //
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $groups = $member->groups;
+        return view('admin.members.show', compact('member', 'books'));
     }
 
     /**

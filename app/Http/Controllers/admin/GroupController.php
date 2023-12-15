@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Group;
 Use App\Http\Controllers\Controller;
 use App\Models\Gym;
+use App\Models\Member;
 use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
@@ -35,7 +36,8 @@ class GroupController extends Controller
         $user->authorizeRoles('admin');
 
         $gyms = Gym::all();
-        return view('admin.groups.create')->with('gyms',$gyms);
+        $members = Member::all();
+        return view('admin.groups.create')->with('gyms',$gyms)->with('members', $members);
     }
 
     /**
@@ -54,7 +56,8 @@ class GroupController extends Controller
             'group_date' => 'required',
             'group_type' => 'required',
             'group_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gym_id' => 'required'
+            'gym_id' => 'required',
+            'members' =>['required', 'exists:authors,id']
         ]);
 
 
@@ -77,6 +80,7 @@ class GroupController extends Controller
             'updated_at' => now()
 
         ]);
+        $group->members()->attach($request->members);
         return to_route('admin.groups.index');
     }
 

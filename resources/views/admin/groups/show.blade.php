@@ -47,6 +47,14 @@
                                 <td>{{ $group->gym->phone_no }}</td>
 
 
+                           
+
+                                <div class="font-bold mb-2">Members</div>
+                                @foreach ($group->members as $member)
+                                    <a href="{{ route('admin.members.show', $member) }}" > <p>{{ $member->first_name }}</p> </a>
+                                @endforeach
+                            </div>
+
 
 
                         </tbody>
